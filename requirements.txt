@@ -1,6 +1,6 @@
 streamlit
 pandas
 numpy
-sklearn
+sk-learn
 matplotlib
 pickle 
