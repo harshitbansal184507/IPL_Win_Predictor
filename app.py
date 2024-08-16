@@ -9,6 +9,7 @@ st.markdown(
     """
     <style>
     .title-container {
+        background-color: black; 
         display: flex;
         align-items: center;
         justify-content: center;
@@ -59,9 +60,9 @@ target=st.number_input("Target",step=1)
 
 col3 , col4 , col5 = st.columns(3)
 with col3 :
-    score = st.number_input("Score",step=1)
+    score = st.number_input("Score",step=10)
 with col4 :
-    overs = st.number_input("Overs",min_value=0,max_value=20)
+    overs = st.number_input("Overs",min_value=1,max_value=20)
 with col5 :
     wickets = st.number_input("Wickets",min_value=0,max_value=10)
 if st.button("Predict"):
@@ -69,8 +70,16 @@ if st.button("Predict"):
     runs_left= target - score
     balls_left = 120- (overs*6)
     wickets = 10-wickets
-    crr= score/overs 
-    rr = (runs_left*6)/balls_left
+    if overs > 0:
+        crr = score / overs
+    else:
+        crr = 0  
+
+
+    if balls_left > 0:
+        rr = (runs_left * 6) / balls_left
+    else:
+        rr = 0 
     data = {
     "batting_team": [batting_team],
     "bowling_team": [bowling_team],
