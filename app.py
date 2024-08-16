@@ -62,7 +62,7 @@ col3 , col4 , col5 = st.columns(3)
 with col3 :
     score = st.number_input("Score",step=10)
 with col4 :
-    overs = st.number_input("Overs",min_value=1,max_value=20)
+    overs = st.number_input("Overs",min_value=0,max_value=20)
 with col5 :
     wickets = st.number_input("Wickets",min_value=0,max_value=10)
 if st.button("Predict"):
